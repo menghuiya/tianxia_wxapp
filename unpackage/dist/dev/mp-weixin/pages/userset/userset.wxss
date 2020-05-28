@@ -1,0 +1,15 @@
+.set-box {
+  margin: 3vw;
+  border-radius: 3vw;
+}
+.set-box .set-title {
+  color: #949797;
+  margin-top: 4vw;
+  margin-left: 2vw;
+}
+.set-box .cell-box {
+  border-radius: 3vw;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
