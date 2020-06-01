@@ -61,13 +61,13 @@ class Request {
 							}
 						} else {
 							// 如果不是返回原始数据(originalData=false)，且没有拦截器的情况下，返回纯数据给then回调
-							resolve(response.data);
+							resolve(response);
 						}
 					} else {
 						// 不返回原始数据的情况下，服务器状态码不为200，modal弹框提示
 						if(response.errMsg) {
 							uni.showModal({
-								title: response.errMsg
+								title: response.data.data.msg
 							});
 						}
 						reject(response)

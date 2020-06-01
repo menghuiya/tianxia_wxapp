@@ -1,23 +1,23 @@
 <template>
-	<view>
+	<view v-if="userinfo">
 		<image class="user-poster" src="@/static/user/user-bg.png"></image>
 		<view class="user-info">
-			<image class="user-headimg" src="@/static/user/default.jpg"></image>
-			<view class="user-name">梦回吖</view>
+			<image class="user-headimg" :src="userinfo.headImg"></image>
+			<view class="user-name">{{userinfo.userName}}</view>
 		</view>
 		<view class="user-action">
 			<u-grid :col="4" :border="false">
 				<u-grid-item>
 					<u-icon name="order" :size="46" color="#F4EA29"></u-icon>
-					<view class="grid-text">发布的</view>
+					<view class="grid-text">发布的{{userinfo.totalCount}}</view>
 				</u-grid-item>
 				<u-grid-item>
 					<u-icon name="rmb-circle-fill" :size="46" color="#F9AB10"></u-icon>
-					<view class="grid-text">卖出的</view>
+					<view class="grid-text">卖出的{{userinfo.sellCount}}</view>
 				</u-grid-item>
 				<u-grid-item>
 					<u-icon name="bag-fill" :size="46" color="#E0620D"></u-icon>
-					<view class="grid-text">买到的</view>
+					<view class="grid-text">买到的{{userinfo.buyCount}}</view>
 				</u-grid-item>
 				<u-grid-item>
 					<u-icon name="shopping-cart-fill" :size="46" color="#0B74EC"></u-icon>
@@ -29,8 +29,8 @@
 				<u-cell-item icon="account-fill" title="个人主页"></u-cell-item>
 				<u-cell-item icon="setting-fill" title="资料设置" @click="goSet"></u-cell-item>
 				<u-cell-item icon="integral-fill" title="会员等级" value="暂未开放"></u-cell-item>
-				<u-cell-item icon="phone-fill" title="联系我们" @click.prevent="openPhone"></u-cell-item>
-				<u-cell-item icon="phone-fill" title="测试登录" @click.prevent="goLogin"></u-cell-item>
+				<u-cell-item icon="phone-fill" title="联系我们" @click="openPhone"></u-cell-item>
+				<u-cell-item icon="phone-fill" title="测试登录" @click="goLogin"></u-cell-item>
 			</u-cell-group>
 		</view>
 	</view>
@@ -39,10 +39,16 @@
 <script>
 export default {
 	data() {
-		return {};
+		return {
+			userinfo:null
+		};
 	},
 	onLoad() {
-		this.$u.mpShare.title = '天苍苍野茫茫，风水草地现牛羊';
+		let userdata = JSON.parse(wx.getStorageSync('userinfo'));
+		this.$u.get('https://www.wdf5.com/api/user/profile/' + userdata.id, {}).then(res => {
+			this.userinfo=res.data.data
+		});
+		this.$u.mpShare.title = userdata.name + '的甜虾个人中心';
 	},
 	methods: {
 		openPhone() {
@@ -61,12 +67,12 @@ export default {
 		},
 		goLogin() {
 			this.$u.route({
-				url: 'pages/login/login'
+				url: 'pages/user/login/login'
 			});
 		},
 		goSet() {
 			this.$u.route({
-				url: 'pages/userset/userset'
+				url: 'pages/user/userset/userset'
 			});
 		}
 	}

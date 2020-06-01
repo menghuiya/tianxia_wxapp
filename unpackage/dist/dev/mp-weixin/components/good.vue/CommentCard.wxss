@@ -1,0 +1,43 @@
+.c-card {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.c-card .c-user-img ._img {
+  width: 7vw;
+  height: 7vw;
+  margin-top: 4vw;
+  border-radius: 2vw;
+}
+.c-card .c-user-info {
+  padding-top: 5vw;
+  margin-left: 2vw;
+  padding-bottom: 3vw;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  border-bottom: 0.02rem solid #fdfbff;
+}
+.c-card .c-user-info .c-user-name {
+  font-size: 0.8rem;
+  color: #000000;
+  font-weight: 550;
+}
+.c-card .c-user-info .c-user-comment {
+  font-size: 0.8rem;
+  color: #000000;
+  margin-top: 1vw;
+}
+.c-card .c-user-info .c-user-date {
+  font-size: 0.62rem;
+  color: #a3a3a3;
+  margin-top: 5vw;
+}
+.c-card .c-user-good {
+  border-top: 0.03rem solid #ececec;
+}
+.c-card .c-user-good .g-com-icon {
+  margin-top: 5vw;
+  margin-right: 4vw;
+}
+

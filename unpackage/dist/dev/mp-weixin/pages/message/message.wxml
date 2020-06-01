@@ -1,1 +1,1 @@
-<view>这里是信息哦</view>
+<block wx:if="{{a}}"><view>这里是信息哦</view></block>

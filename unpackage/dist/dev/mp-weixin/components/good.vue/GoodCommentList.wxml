@@ -1,0 +1,1 @@
+<view class="g-comment-box"><view class="g-comment-title">全部留言 · 5</view><block wx:for="{{5}}" wx:for-item="item" wx:for-index="index" wx:key="index"><comment-card vue-id="{{'2e7a14a5-1-'+index}}" comment_data="{{item}}" bind:__l="__l"></comment-card></block></view>

@@ -1,25 +1,22 @@
 <template>
 	<view class="content">
-		
 		<u-sticky offset-top="0">
-			<view class="searchbox">
-				<u-search placeholder="日照香炉生紫烟" v-model="keyword" :clearabled="true" @search="showkey" @custom="showkey"></u-search>
-			</view>
+			<view class="searchbox"><u-search placeholder="日照香炉生紫烟" v-model="keyword" :clearabled="true" @search="showkey" @custom="showkey"></u-search></view>
 		</u-sticky>
 		<view class="wrap"><u-swiper :list="list"></u-swiper></view>
-		<u-grid :col="5" v-if="catelist">
-			<u-grid-item v-for="data in catelist" :key="data._id">
+		<u-grid :col="5" v-if="catelist" :border="false">
+			<u-grid-item v-for="data in catelist" :key="data._id" @click="goKind(data)">
 				<!-- <u-icon :name="data.imgPath" :size="46"></u-icon> -->
-				<image class="cateimg" :src="data.imgPath"></image>
-				<view class="grid-text">{{data.kindName}}</view>
+				<image class="cateimg" :src="data.imgPath" @error="defImg"></image>
+				<view class="grid-text">{{ data.kindName }}</view>
 			</u-grid-item>
 		</u-grid>
-			<product-list :imgdata="imgData"></product-list>
+		<product-list :imgdata="imgData"></product-list>
 	</view>
 </template>
 
 <script>
-import ProductList from '@/components/ProductList.vue'
+import ProductList from '@/components/ProductList.vue';
 export default {
 	data() {
 		return {
@@ -38,39 +35,65 @@ export default {
 				}
 			],
 			catelist: [],
-			imgData:[],
-			keyword:''
+			imgData: [],
+			keyword: '',
+			defaultImg: require('@/static/noimg.png')
 		};
 	},
-	components:{
-	ProductList
+	components: {
+		ProductList
 	},
 	onLoad() {
 		this.$u.mpShare.title = '天苍苍野茫茫，风水草地现牛羊';
-		this.$u.get('https://www.wdf5.com/api/commodity/kind', {}, ).then(res => {
-						this.catelist = res.data;
-						console.log(res)
-					}).catch(err=>{
-						console.log(err.msg);
-					})
-		this.$u.get('https://www.wdf5.com/api/commodity/recommend', {}, ).then(res => {
-						this.imgData = res.data;
-					}).catch(err=>{
-						console.log(err.msg);
-					})
+		this.$u
+			.get('https://www.wdf5.com/api/commodity/kind', {})
+			.then(res => {
+				this.catelist = res.data.data;
+				console.log(res);
+			})
+			.catch(err => {
+				console.log(err.msg);
+			});
+		this.$u
+			.get('https://www.wdf5.com/api/commodity/recommend', {})
+			.then(res => {
+				this.imgData = res.data.data;
+			})
+			.catch(err => {
+				console.log(err.msg);
+			});
 	},
 	methods: {
-		showkey(){
+		showkey() {
 			console.log(this.keyword)
+			this.$u.route({
+				url: 'pages/search/search',
+				params: {
+					keyword: this.keyword
+				}
+			});
+		},
+		defImg() {
+			let img = event.srcElement;
+			img.src = this.defaultImg;
+			img.onerror = null; //防止闪图
+		},
+		goKind(data) {
+			this.$u.route({
+				url: 'pages/category/category',
+				params: {
+					kind_id: data._id
+				}
+			});
 		}
 	}
 };
 </script>
 
 <style lang="scss">
-.searchbox{
+.searchbox {
 	padding: 3vw 2vw;
-	background-color: #FFFFFF;
+	background-color: #ffffff;
 }
 .wrap {
 	padding: 20rpx;

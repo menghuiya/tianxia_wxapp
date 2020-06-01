@@ -1,0 +1,26 @@
+.p-price-box.data-v-2d59cc89 {
+  margin-top: 4vw;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.p-price-box .p-price.data-v-2d59cc89 {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.p-price-box .p-price text.data-v-2d59cc89 {
+  font-size: 0.5rem;
+  display: inline-block;
+}
+.p-price-box .goodtag.data-v-2d59cc89 {
+  height: 40rpx;
+  margin: auto 1vw;
+}
+.issale.data-v-2d59cc89 {
+  background: #18b566;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 1vw;
+}
+
