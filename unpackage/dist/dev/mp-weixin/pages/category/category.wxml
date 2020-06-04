@@ -1,1 +1,1 @@
-<view><block wx:if="{{imgData.length>0}}"><product-list vue-id="9d275500-1" imgdata="{{imgData}}" bind:__l="__l"></product-list></block><block wx:if="{{imgData.length==0}}"><u-empty vue-id="9d275500-2" text="分类商品为空" mode="list" bind:__l="__l"></u-empty></block></view>
+<block wx:if="{{imgData}}"><view><block wx:if="{{imgData.length>0}}"><product-list vue-id="9d275500-1" imgdata="{{imgData}}" bind:__l="__l"></product-list></block><block wx:if="{{imgData.length==0}}"><u-empty vue-id="9d275500-2" text="分类商品为空" mode="list" bind:__l="__l"></u-empty></block></view></block>

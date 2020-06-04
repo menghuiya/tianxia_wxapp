@@ -130,7 +130,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var GoodTopUser = function GoodTopUser() {__webpack_require__.e(/*! require.ensure | components/good.vue/GoodTopUser */ "components/good.vue/GoodTopUser").then((function () {return resolve(__webpack_require__(/*! @/components/good.vue/GoodTopUser.vue */ 209));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var GoodPrice = function GoodPrice() {__webpack_require__.e(/*! require.ensure | components/good.vue/GoodPrice */ "components/good.vue/GoodPrice").then((function () {return resolve(__webpack_require__(/*! @/components/good.vue/GoodPrice.vue */ 216));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var GoodContent = function GoodContent() {__webpack_require__.e(/*! require.ensure | components/good.vue/GoodContent */ "components/good.vue/GoodContent").then((function () {return resolve(__webpack_require__(/*! @/components/good.vue/GoodContent.vue */ 223));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var GoodBottomUser = function GoodBottomUser() {__webpack_require__.e(/*! require.ensure | components/good.vue/GoodBottomUser */ "components/good.vue/GoodBottomUser").then((function () {return resolve(__webpack_require__(/*! @/components/good.vue/GoodBottomUser.vue */ 230));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var GoodCommentList = function GoodCommentList() {__webpack_require__.e(/*! require.ensure | components/good.vue/GoodCommentList */ "components/good.vue/GoodCommentList").then((function () {return resolve(__webpack_require__(/*! @/components/good.vue/GoodCommentList.vue */ 237));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var GoodTopUser = function GoodTopUser() {__webpack_require__.e(/*! require.ensure | components/good.vue/GoodTopUser */ "components/good.vue/GoodTopUser").then((function () {return resolve(__webpack_require__(/*! @/components/good.vue/GoodTopUser.vue */ 270));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var GoodPrice = function GoodPrice() {__webpack_require__.e(/*! require.ensure | components/good.vue/GoodPrice */ "components/good.vue/GoodPrice").then((function () {return resolve(__webpack_require__(/*! @/components/good.vue/GoodPrice.vue */ 277));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var GoodContent = function GoodContent() {__webpack_require__.e(/*! require.ensure | components/good.vue/GoodContent */ "components/good.vue/GoodContent").then((function () {return resolve(__webpack_require__(/*! @/components/good.vue/GoodContent.vue */ 284));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var GoodBottomUser = function GoodBottomUser() {__webpack_require__.e(/*! require.ensure | components/good.vue/GoodBottomUser */ "components/good.vue/GoodBottomUser").then((function () {return resolve(__webpack_require__(/*! @/components/good.vue/GoodBottomUser.vue */ 291));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var GoodCommentList = function GoodCommentList() {__webpack_require__.e(/*! require.ensure | components/good.vue/GoodCommentList */ "components/good.vue/GoodCommentList").then((function () {return resolve(__webpack_require__(/*! @/components/good.vue/GoodCommentList.vue */ 298));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var GoodAction = function GoodAction() {__webpack_require__.e(/*! require.ensure | components/good.vue/GoodAction */ "components/good.vue/GoodAction").then((function () {return resolve(__webpack_require__(/*! @/components/good.vue/GoodAction.vue */ 305));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
 
 
 
@@ -161,14 +163,28 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     GoodPrice: GoodPrice,
     GoodContent: GoodContent,
     GoodBottomUser: GoodBottomUser,
-    GoodCommentList: GoodCommentList },
+    GoodCommentList: GoodCommentList,
+    GoodAction: GoodAction },
+
+  computed: {
+    isShowAction: function isShowAction() {
+      if (JSON.parse(wx.getStorageSync('userinfo')).id === this.gooddata.user._id || this.gooddata.isSale) {
+        return false;
+      } else {
+        return true;
+      }
+    } },
 
   onLoad: function onLoad(option) {var _this = this;
-    console.log(option.id);
+    uni.showLoading({
+      title: '正在加载' });
+
     this.$u.get('https://www.wdf5.com/api/commodity/info/' + option.id, {}).then(function (res) {
       _this.gooddata = res.data.data;
+      uni.hideLoading();
     });
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

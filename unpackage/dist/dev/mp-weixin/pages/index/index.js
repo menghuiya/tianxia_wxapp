@@ -94,19 +94,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uSticky: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-sticky/u-sticky */ "uview-ui/components/u-sticky/u-sticky").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-sticky/u-sticky.vue */ 111))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-sticky/u-sticky */ "uview-ui/components/u-sticky/u-sticky").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-sticky/u-sticky.vue */ 165))
   },
   uSearch: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-search/u-search */ "uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-search/u-search.vue */ 118))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-search/u-search */ "uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-search/u-search.vue */ 172))
   },
   uSwiper: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-swiper/u-swiper */ "uview-ui/components/u-swiper/u-swiper").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-swiper/u-swiper.vue */ 125))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-swiper/u-swiper */ "uview-ui/components/u-swiper/u-swiper").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-swiper/u-swiper.vue */ 179))
   },
   uGrid: function() {
-    return Promise.all(/*! import() | uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid/u-grid.vue */ 132))
+    return Promise.all(/*! import() | uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid/u-grid.vue */ 186))
   },
   uGridItem: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-grid-item/u-grid-item */ "uview-ui/components/u-grid-item/u-grid-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid-item/u-grid-item.vue */ 139))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-grid-item/u-grid-item */ "uview-ui/components/u-grid-item/u-grid-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid-item/u-grid-item.vue */ 193))
   }
 }
 var render = function() {
@@ -146,7 +146,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ProductList = function ProductList() {__webpack_require__.e(/*! require.ensure | components/ProductList */ "components/ProductList").then((function () {return resolve(__webpack_require__(/*! @/components/ProductList.vue */ 146));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ProductList = function ProductList() {__webpack_require__.e(/*! require.ensure | components/ProductList */ "components/ProductList").then((function () {return resolve(__webpack_require__(/*! @/components/ProductList.vue */ 200));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -192,12 +192,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     ProductList: ProductList },
 
   onLoad: function onLoad() {var _this = this;
-    this.$u.mpShare.title = '天苍苍野茫茫，风水草地现牛羊';
+    this.$u.mpShare.title = '甜虾二手市场,让您的闲置物品不在无聊';
     this.$u.
     get('https://www.wdf5.com/api/commodity/kind', {}).
     then(function (res) {
       _this.catelist = res.data.data;
-      console.log(res);
     }).
     catch(function (err) {
       console.log(err.msg);

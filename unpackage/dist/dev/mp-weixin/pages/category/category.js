@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uEmpty: function() {
-    return Promise.all(/*! import() | uview-ui/components/u-empty/u-empty */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-empty/u-empty")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-empty/u-empty.vue */ 244))
+    return Promise.all(/*! import() | uview-ui/components/u-empty/u-empty */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-empty/u-empty")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-empty/u-empty.vue */ 312))
   }
 }
 var render = function() {
@@ -55,7 +55,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ProductList = function ProductList() {__webpack_require__.e(/*! require.ensure | components/ProductList */ "components/ProductList").then((function () {return resolve(__webpack_require__(/*! @/components/ProductList.vue */ 146));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ProductList = function ProductList() {__webpack_require__.e(/*! require.ensure | components/ProductList */ "components/ProductList").then((function () {return resolve(__webpack_require__(/*! @/components/ProductList.vue */ 200));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -67,24 +67,28 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   data: function data() {
     return {
-      imgData: [] };
+      imgData: null };
 
   },
   components: {
     ProductList: ProductList },
 
   onLoad: function onLoad(option) {var _this = this;
-    this.$u.mpShare.title = '天苍苍野茫茫，风水草地现牛羊';
+    this.$u.mpShare.title = '甜虾分类商品,欢迎来选';
+    uni.showLoading({
+      title: '正在加载' });
+
     this.$u.
     get('https://www.wdf5.com/api/commodity/classification/' + option.kind_id, {}).
     then(function (res) {
-      console.log(res.data.data);
       _this.imgData = res.data.data;
+      uni.hideLoading();
     }).
     catch(function (err) {
       console.log(err.msg);
     });
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

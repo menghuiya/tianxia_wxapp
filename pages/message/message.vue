@@ -12,7 +12,6 @@ export default {
 	onShow() {
 		this.a = false;
 		if (wx.getStorageSync('userinfo')) {
-			uni.hideLoading();
 			this.a = true;
 		} else {
 			uni.showLoading({
@@ -20,6 +19,7 @@ export default {
 			});
 			setTimeout(() => {
 				this.$u.route('/pages/user/login/login');
+				uni.hideLoading();
 			}, 1000);
 		}
 	}

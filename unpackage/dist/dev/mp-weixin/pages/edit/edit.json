@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "发布商品",
+  "usingComponents": {
+    "u-top-tips": "/uview-ui/components/u-top-tips/u-top-tips",
+    "u-cell-group": "/uview-ui/components/u-cell-group/u-cell-group",
+    "u-field": "/uview-ui/components/u-field/u-field",
+    "u-upload": "/uview-ui/components/u-upload/u-upload",
+    "u-picker": "/uview-ui/components/u-picker/u-picker",
+    "u-button": "/uview-ui/components/u-button/u-button"
+  }
+}

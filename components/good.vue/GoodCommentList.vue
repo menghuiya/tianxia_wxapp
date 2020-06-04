@@ -1,8 +1,8 @@
 <template>
 	<view class="g-comment-box">
-	    <view class="g-comment-title">全部留言 · 5</view>
+	    <view class="g-comment-title">全部留言 · {{commentdata.length}}</view>
 	    <comment-card
-	      v-for="(item, index) in 5"
+	      v-for="(item, index) in commentdata"
 	      :comment_data="item"
 	      :key="index"
 	    ></comment-card>
@@ -12,6 +12,7 @@
 <script>
 	import CommentCard from './CommentCard';
 	export default {
+		props:['commentdata'],
 		data() {
 			return {
 				

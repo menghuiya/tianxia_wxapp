@@ -45,22 +45,71 @@
 					"style": {
 						"navigationBarTitleText": "资料设置"
 					}
-					
+
+				}, {
+					"path": "pages/good/good",
+					"style": {
+						"navigationBarTitleText": "商品详情"
+					}
+				}, {
+					"path": "pages/category/category",
+					"style": {
+						"navigationBarTitleText": "二手分类"
+					}
+				}, {
+					"path": "pages/search/search",
+					"style": {
+						"navigationBarTitleText": "搜索中心"
+					}
+				}, {
+					"path": "pages/edit/edit",
+					"style": {
+						"navigationBarTitleText": "发布商品",
+						// "navigationStyle": "custom" ,// 隐藏系统导航栏
+						// "navigationBarTextStyle": "white" 
+						"app-plus": {
+							"bounce": "none", //关闭窗口回弹效果
+							"titleNView": {
+								"buttons": [ //原生标题栏按钮配置,
+									{
+										"type": "share",
+										"text": "发表",
+										"float": "right"
+										
+									}
+								]
+							}
+						}
+					}
 				}
 			    ,{
-            "path" : "pages/good/good",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/category/category",
+            "path" : "pages/good/buyorder/buyorder",
             "style" : {
-							"navigationBarTitleText": "二手分类"
+							"navigationBarTitleText": "我的购买"
 						}
         }
         ,{
-            "path" : "pages/search/search",
+            "path" : "pages/good/sellorder/sellorder",
             "style" : {
-							"navigationBarTitleText": "搜索中心"
+							"navigationBarTitleText": "我的出售"
+						}
+        }
+        ,{
+            "path" : "pages/user/balance/balance",
+            "style" : {
+							"navigationBarTitleText": "我的余额"
+						}
+        }
+        ,{
+            "path" : "pages/user/personal/personal",
+            "style" : {
+							"navigationBarTitleText": "个人主页"
+						}
+        }
+        ,{
+            "path" : "pages/good/order/order",
+            "style" : {
+							"navigationBarTitleText": "购买宝贝"
 						}
         }
     ],

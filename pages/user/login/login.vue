@@ -14,7 +14,6 @@
 				<text class="login-xytitle">《隐私权政策》</text>
 			</view>
 			<view class="loginbtn"><u-button type="primary" @click="login">开始登录</u-button></view>
-			<view class="loginbtn"><u-button type="primary" @click="logintest">测试登录</u-button></view>
 			<view class="login-nocount">
 				没有账号?
 				<navigator url="../register/register">点击注册</navigator>
@@ -65,8 +64,9 @@ export default {
 					wx.setStorageSync('userinfo',JSON.stringify(userInfo))
 					this.$refs.uToast.show({
 						title: '登录成功',
-						type: 'success'
-						// url: '/pages/user/index'
+						type: 'success',
+						url: '/pages/user/user',
+						isTab:true
 					});		
 				})
 				.catch(err => {

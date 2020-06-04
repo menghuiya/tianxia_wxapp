@@ -3,7 +3,7 @@
   display: -webkit-flex;
   display: flex;
 }
-.c-card .c-user-img ._img {
+.c-card .c-user-img image {
   width: 7vw;
   height: 7vw;
   margin-top: 4vw;

@@ -94,16 +94,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uCellGroup: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-group/u-cell-group */ "uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-group/u-cell-group.vue */ 160))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-group/u-cell-group */ "uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-group/u-cell-group.vue */ 221))
   },
   uCellItem: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-item/u-cell-item */ "uview-ui/components/u-cell-item/u-cell-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-item/u-cell-item.vue */ 167))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-item/u-cell-item */ "uview-ui/components/u-cell-item/u-cell-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-item/u-cell-item.vue */ 228))
   },
   uUpload: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-upload/u-upload */ "uview-ui/components/u-upload/u-upload").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-upload/u-upload.vue */ 202))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-upload/u-upload */ "uview-ui/components/u-upload/u-upload").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-upload/u-upload.vue */ 263))
   },
   uIcon: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 153))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 214))
   }
 }
 var render = function() {
@@ -171,11 +171,12 @@ var _default =
   data: function data() {
     return {
       action: 'https://www.wdf5.com/api/upload/img',
-      fileList: [
-      {
-        url: 'http://pics.sc.chinaz.com/files/pic/pic9/201912/hpic1886.jpg' }] };
-
-
+      fileList: [],
+      user_id: JSON.parse(wx.getStorageSync('userinfo')).id,
+      header: {
+        'content-type': 'application/json;charset=UTF-8',
+        Cookie: wx.getStorageSync('usercookie') //读取cookie
+      } };
 
   },
   components: {},
@@ -184,9 +185,9 @@ var _default =
       var surl = 'https://static-resource-1256396014.cos.ap-nanjing.myqcloud.com/img/public/';
       var imgurl = surl + JSON.parse(data).data.src;
       this.$u.put('https://www.wdf5.com/api/user/headimg', {
-        userId: '5ec1367c4dc0902f3cf18fb3',
-        headImg: imgurl }).
-      then(function (res) {
+        userId: this.user_id,
+        headImg: imgurl },
+      this.header).then(function (res) {
         console.log(res);
       }).catch(function (err) {
         console.log(err);
@@ -194,7 +195,15 @@ var _default =
     },
     errdata: function errdata(res) {
       console.log(res);
-    } } };exports.default = _default;
+    } },
+
+  onLoad: function onLoad() {var _this = this;
+    var userdata = JSON.parse(wx.getStorageSync('userinfo'));
+    this.$u.get('https://www.wdf5.com/api/user/profile/' + userdata.id, {}).then(function (res) {
+      var headdata = { url: res.data.data.headImg };
+      _this.fileList.push(headdata);
+    });
+  } };exports.default = _default;
 
 /***/ }),
 

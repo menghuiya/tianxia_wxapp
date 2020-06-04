@@ -25,7 +25,10 @@ export default {
 	methods: {
 		goPerson() {
 			this.$u.route({
-				url: 'pages/userset/userset'
+				url: 'pages/user/personal/personal',
+				params: {
+					user_id: this.userdata._id
+				}
 			});
 		}
 	}

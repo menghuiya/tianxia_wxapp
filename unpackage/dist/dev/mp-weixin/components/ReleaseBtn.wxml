@@ -1,0 +1,1 @@
+<view class="r-btn-box _div data-v-0dae9d68" tag="div" data-event-opts="{{[['tap',[['btnClick',['$event']]]]]}}" bindtap="__e"><u-icon class="release-iocn data-v-0dae9d68" vue-id="b5d67dd4-1" name="plus" color="#2979ff" size="64" bind:__l="__l"></u-icon></view>

@@ -1,0 +1,8 @@
+.up-box {
+  padding: 0 20rpx;
+  background-color: #ffffff;
+}
+.up-box .u-upload {
+  margin: auto;
+}
+

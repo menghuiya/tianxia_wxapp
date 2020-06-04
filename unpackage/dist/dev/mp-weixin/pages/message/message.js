@@ -142,7 +142,6 @@ var _default =
   onShow: function onShow() {var _this = this;
     this.a = false;
     if (wx.getStorageSync('userinfo')) {
-      uni.hideLoading();
       this.a = true;
     } else {
       uni.showLoading({
@@ -150,6 +149,7 @@ var _default =
 
       setTimeout(function () {
         _this.$u.route('/pages/user/login/login');
+        uni.hideLoading();
       }, 1000);
     }
   } };exports.default = _default;

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "搜索中心",
+  "usingComponents": {
+    "u-sticky": "/uview-ui/components/u-sticky/u-sticky",
+    "u-search": "/uview-ui/components/u-search/u-search",
+    "u-empty": "/uview-ui/components/u-empty/u-empty",
+    "product-list": "/components/ProductList"
+  }
+}

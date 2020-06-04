@@ -94,13 +94,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uSticky: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-sticky/u-sticky */ "uview-ui/components/u-sticky/u-sticky").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-sticky/u-sticky.vue */ 111))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-sticky/u-sticky */ "uview-ui/components/u-sticky/u-sticky").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-sticky/u-sticky.vue */ 165))
   },
   uSearch: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-search/u-search */ "uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-search/u-search.vue */ 118))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-search/u-search */ "uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-search/u-search.vue */ 172))
   },
   uEmpty: function() {
-    return Promise.all(/*! import() | uview-ui/components/u-empty/u-empty */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-empty/u-empty")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-empty/u-empty.vue */ 244))
+    return Promise.all(/*! import() | uview-ui/components/u-empty/u-empty */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-empty/u-empty")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-empty/u-empty.vue */ 312))
   }
 }
 var render = function() {
@@ -140,7 +140,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ProductList = function ProductList() {__webpack_require__.e(/*! require.ensure | components/ProductList */ "components/ProductList").then((function () {return resolve(__webpack_require__(/*! @/components/ProductList.vue */ 146));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ProductList = function ProductList() {__webpack_require__.e(/*! require.ensure | components/ProductList */ "components/ProductList").then((function () {return resolve(__webpack_require__(/*! @/components/ProductList.vue */ 200));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
 
 
 
@@ -155,8 +157,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   data: function data() {
     return {
-      imgData: [],
-      keyword: '手机' };
+      imgData: null,
+      keyword: '' };
 
   },
   components: {
@@ -164,21 +166,28 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   methods: {
     showkey: function showkey() {var _this = this;
+      uni.showLoading({
+        title: '正在搜索' });
+
       this.$u.
       get('https://www.wdf5.com/api/commodity/search/' + this.keyword, {}).
       then(function (res) {
-        console.log(res.data.data);
         _this.imgData = res.data.data;
+        uni.hideLoading();
       }).
       catch(function (err) {
-        console.log(err.msg);
+        console.log(err);
       });
     } },
 
   onLoad: function onLoad(option) {
     this.keyword = option.keyword;
+    uni.showLoading({
+      title: '正在搜索' });
+
     this.showkey();
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

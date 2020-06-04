@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uSticky: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-sticky/u-sticky */ "uview-ui/components/u-sticky/u-sticky").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-sticky/u-sticky.vue */ 111))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-sticky/u-sticky */ "uview-ui/components/u-sticky/u-sticky").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-sticky/u-sticky.vue */ 165))
   },
   uSearch: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-search/u-search */ "uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-search/u-search.vue */ 118))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-search/u-search */ "uview-ui/components/u-search/u-search").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-search/u-search.vue */ 172))
   }
 }
 var render = function() {
@@ -137,7 +137,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ProductList = function ProductList() {__webpack_require__.e(/*! require.ensure | components/ProductList */ "components/ProductList").then((function () {return resolve(__webpack_require__(/*! @/components/ProductList.vue */ 146));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ReleaseBtn = function ReleaseBtn() {__webpack_require__.e(/*! require.ensure | components/ReleaseBtn */ "components/ReleaseBtn").then((function () {return resolve(__webpack_require__(/*! @/components/ReleaseBtn.vue */ 207));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ProductList = function ProductList() {__webpack_require__.e(/*! require.ensure | components/ProductList */ "components/ProductList").then((function () {return resolve(__webpack_require__(/*! @/components/ProductList.vue */ 200));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
 
 
 
@@ -151,46 +153,35 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   data: function data() {
     return {
-      keyword: '遥看瀑布挂前川',
-      imgData: [
-      {
-        price: 999,
-        description: '听说你在那边过得很好呀,我想去看看你呢',
-        _id: '5ec25a924dc0902f3cf18fd8',
-        imgPath: ['http://test.wdf5.com/public/uploadImgs/upload_1588911872726.jpg', 'http://test.wdf5.com/public/uploadImgs/upload_1589025941593.jpg'],
-        user: {
-          userName: '梦回吖',
-          headImg:
-          'https://static-resource-1256396014.cos.ap-nanjing.myqcloud.com/img/public/5.22.2020/B80606E6-2EDB-4AFB-B940-F4F6F5D8911Ab5ac18bda3af74a64865b6c33fe0e2b23b266b8a4685cf1266123dd39bbe6ee20981c70c61354c0d8488faf67dd6d98c78e96b6455684bfeee57e3133ca93558.gif' } },
-
-
-      {
-        price: 999,
-        description: '听说你在那边过得很好呀,我想去看看你呢',
-        _id: '5ec25a924dc0902f3cf18fd8',
-        imgPath: ['http://test.wdf5.com/public/uploadImgs/upload_1588911872726.jpg', 'http://test.wdf5.com/public/uploadImgs/upload_1589025941593.jpg'],
-        user: {
-          userName: '梦回吖',
-          headImg:
-          'https://static-resource-1256396014.cos.ap-nanjing.myqcloud.com/img/public/5.22.2020/B80606E6-2EDB-4AFB-B940-F4F6F5D8911Ab5ac18bda3af74a64865b6c33fe0e2b23b266b8a4685cf1266123dd39bbe6ee20981c70c61354c0d8488faf67dd6d98c78e96b6455684bfeee57e3133ca93558.gif' } },
-
-
-      {
-        price: 999,
-        description: '听说你在那边过得很好呀,我想去看看你呢',
-        _id: '5ec25a924dc0902f3cf18fd8',
-        imgPath: ['http://test.wdf5.com/public/uploadImgs/upload_1588911872726.jpg', 'http://test.wdf5.com/public/uploadImgs/upload_1589025941593.jpg'],
-        user: {
-          userName: '梦回吖',
-          headImg:
-          'https://static-resource-1256396014.cos.ap-nanjing.myqcloud.com/img/public/5.22.2020/B80606E6-2EDB-4AFB-B940-F4F6F5D8911Ab5ac18bda3af74a64865b6c33fe0e2b23b266b8a4685cf1266123dd39bbe6ee20981c70c61354c0d8488faf67dd6d98c78e96b6455684bfeee57e3133ca93558.gif' } }] };
-
-
-
+      keyword: '手机',
+      imgData: [] };
 
   },
   components: {
-    ProductList: ProductList } };exports.default = _default;
+    ProductList: ProductList,
+    ReleaseBtn: ReleaseBtn },
+
+  methods: {
+    showkey: function showkey() {
+      console.log(this.keyword);
+      this.$u.route({
+        url: 'pages/search/search',
+        params: {
+          keyword: this.keyword } });
+
+
+    } },
+
+  onLoad: function onLoad() {var _this = this;
+    this.$u.
+    get('https://www.wdf5.com/api/commodity/recommend', {}).
+    then(function (res) {
+      _this.imgData = res.data.data;
+    }).
+    catch(function (err) {
+      console.log(err.msg);
+    });
+  } };exports.default = _default;
 
 /***/ }),
 

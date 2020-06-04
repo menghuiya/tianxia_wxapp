@@ -18,5 +18,6 @@
 	
 	page{
 		background-color: rgb(240, 240, 240);
+		height: 100%;
 	}
 </style>

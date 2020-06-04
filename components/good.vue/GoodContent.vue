@@ -11,6 +11,7 @@
 	        :key="index"
 					@click="imgClick(index)"
 					class="good-img"
+					mode="widthFix"
 	      />
 	    </view>
 	    <view class="p-c-data">

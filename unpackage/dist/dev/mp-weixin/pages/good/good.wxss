@@ -5,4 +5,10 @@
   padding: 3vw 4vw;
   background: #ffffff;
 }
+.boxs .good-b-action.data-v-0d377b82 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
 

@@ -94,19 +94,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uTopTips: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-top-tips/u-top-tips */ "uview-ui/components/u-top-tips/u-top-tips").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-top-tips/u-top-tips.vue */ 174))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-top-tips/u-top-tips */ "uview-ui/components/u-top-tips/u-top-tips").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-top-tips/u-top-tips.vue */ 242))
   },
   uCellGroup: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-group/u-cell-group */ "uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-group/u-cell-group.vue */ 160))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-group/u-cell-group */ "uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-group/u-cell-group.vue */ 221))
   },
   uField: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-field/u-field */ "uview-ui/components/u-field/u-field").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-field/u-field.vue */ 181))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-field/u-field */ "uview-ui/components/u-field/u-field").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-field/u-field.vue */ 249))
   },
   uButton: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-button/u-button */ "uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-button/u-button.vue */ 188))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-button/u-button */ "uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-button/u-button.vue */ 235))
   },
   uToast: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-toast/u-toast */ "uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-toast/u-toast.vue */ 195))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-toast/u-toast */ "uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-toast/u-toast.vue */ 256))
   }
 }
 var render = function() {
@@ -172,7 +172,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-
 var _md = _interopRequireDefault(__webpack_require__(/*! uview-ui/libs/function/md5 */ 70));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -198,9 +197,9 @@ var _md = _interopRequireDefault(__webpack_require__(/*! uview-ui/libs/function/
 //
 //
 //
-//
 var _default = { data: function data() {return { background: { backgroundImage: 'linear-gradient(45deg, rgb(28, 187, 180), rgb(141, 198, 63))' }, p: { userName: '', password: '' }, header: { 'content-type': 'application/x-www-form-urlencoded', 'Cookie': wx.getStorageSync("usercookie") //读取cookie
-      } };}, methods: { login: function login() {var _this = this;if (this.p.userName == '' || this.p.password == '') {this.$refs.uTips.show({ title: '请输入账号或者密码', type: 'error', duration: '2300' });return;}this.p.password = _md.default.md5(this.p.password);
+      } };}, methods: { login: function login() {var _this = this;if (this.p.userName == '' || this.p.password == '') {this.$refs.uTips.show({ title: '请输入账号或者密码', type: 'error', duration: '2300' });return;}
+      this.p.password = _md.default.md5(this.p.password);
       this.$u.
       post('https://www.wdf5.com/api/user/login', this.p).
       then(function (res) {
@@ -213,9 +212,10 @@ var _default = { data: function data() {return { background: { backgroundImage: 
         wx.setStorageSync('userinfo', JSON.stringify(userInfo));
         _this.$refs.uToast.show({
           title: '登录成功',
-          type: 'success'
-          // url: '/pages/user/index'
-        });
+          type: 'success',
+          url: '/pages/user/user',
+          isTab: true });
+
       }).
       catch(function (err) {
         _this.p.password = '';

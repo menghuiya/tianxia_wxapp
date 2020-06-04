@@ -3,7 +3,7 @@
 		<view class="cell-box">
 			<u-cell-group title="基础信息" label="点击图片右上角删除后修改">
 				<u-cell-item title="头像" :arrow="false" :center="true">
-					<u-upload @on-success="getData" @on-error="errdata" :action="action" :show-progress="false" :custom-btn="true" width="200" del-icon="camera" del-bg-color="transparent" :max-count="1" :file-list="fileList" slot="right-icon">
+					<u-upload @on-success="getData" @on-error="errdata" :action="action" :header="header" :show-progress="false" :custom-btn="true" width="200" del-icon="camera" del-bg-color="transparent" :max-count="1" :file-list="fileList" slot="right-icon">
 						<view slot="addBtn" class="slot-btn" hover-class="slot-btn__hover" hover-stay-time="150"><u-icon name="photo" size="60" :color="$u.color['lightColor']"></u-icon></view>
 					</u-upload>
 				</u-cell-item>
@@ -26,11 +26,12 @@ export default {
 	data() {
 		return {
 			action: 'https://www.wdf5.com/api/upload/img',
-			fileList: [
-				{
-					url: 'http://pics.sc.chinaz.com/files/pic/pic9/201912/hpic1886.jpg'
-				}
-			]
+			fileList: [],
+			user_id:JSON.parse(wx.getStorageSync('userinfo')).id,
+			header: {
+				'content-type': 'application/json;charset=UTF-8',
+				Cookie: wx.getStorageSync('usercookie') //读取cookie
+			},
 		};
 	},
 	components: {},
@@ -39,9 +40,9 @@ export default {
 			let surl ='https://static-resource-1256396014.cos.ap-nanjing.myqcloud.com/img/public/';
 			let imgurl=surl+JSON.parse(data).data.src;
 			this.$u.put('https://www.wdf5.com/api/user/headimg', {
-				userId:'5ec1367c4dc0902f3cf18fb3',
+				userId:this.user_id,
 				headImg:imgurl
-			}, ).then(res => {
+			}, this.header).then(res => {
 							console.log(res)
 						}).catch(err=>{
 							console.log(err);
@@ -50,6 +51,13 @@ export default {
 		errdata(res){
 			console.log(res)
 		}
+	},
+	onLoad() {
+		let userdata = JSON.parse(wx.getStorageSync('userinfo'));
+		this.$u.get('https://www.wdf5.com/api/user/profile/' + userdata.id, {}).then(res => {
+			let headdata={url:res.data.data.headImg}
+			this.fileList.push(headdata)
+		});
 	}
 };
 </script>

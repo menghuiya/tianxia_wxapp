@@ -1,9 +1,11 @@
 {
+  "navigationBarTitleText": "商品详情",
   "usingComponents": {
     "good-top-user": "/components/good.vue/GoodTopUser",
     "good-price": "/components/good.vue/GoodPrice",
     "good-content": "/components/good.vue/GoodContent",
     "good-bottom-user": "/components/good.vue/GoodBottomUser",
-    "good-comment-list": "/components/good.vue/GoodCommentList"
+    "good-comment-list": "/components/good.vue/GoodCommentList",
+    "good-action": "/components/good.vue/GoodAction"
   }
 }

@@ -1,0 +1,62 @@
+.goodinfo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  background-color: #ffffff;
+  margin-top: 20rpx;
+  padding: 20rpx;
+}
+.goodinfo .goodimg {
+  width: 180rpx;
+  height: 180rpx;
+}
+.goodinfo .goodimg image {
+  width: 100%;
+  height: 100%;
+}
+.goodinfo .goodtext {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  margin-left: 20rpx;
+}
+.goodinfo .goodtext .good-t-title {
+  font-size: 30rpx;
+  color: #000000;
+}
+.goodinfo .goodtext .good-t-price {
+  color: #ee0a24;
+  font-weight: 600;
+  margin-top: 50rpx;
+}
+.adressbox {
+  margin-top: 20rpx;
+}
+.order-action-box {
+  background-color: #ffffff;
+  height: 120rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.order-action-box text {
+  margin-left: 30rpx;
+}
+.order-action-box .order-action-price {
+  color: #ee0a24;
+  font-weight: 600;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.order-action-box .order-action-btn {
+  margin-right: 30rpx;
+}
+

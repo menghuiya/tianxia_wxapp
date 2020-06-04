@@ -1,0 +1,57 @@
+.b_box {
+  text-align: center;
+  padding: 5vw;
+}
+.b_box .banlance-icon {
+  display: block;
+  margin-top: 10vw;
+}
+.b_box .b_may_title {
+  margin-top: 6vw;
+  font-size: 32rpx;
+}
+.b_box .b_my_box {
+  margin-top: 5vw;
+}
+.b_box .b_my_box view {
+  display: inline-block;
+  font-weight: 600;
+}
+.b_box .b_my_box .b_my_icon {
+  font-size: 1.3rem;
+}
+.b_box .b_my_box .b_my_num {
+  font-size: 2rem;
+  margin-left: 2vw;
+}
+.b_box .b_btn_box {
+  margin-top: 10vh;
+}
+.b_box .b_btn_box .banlance-btn {
+  display: block;
+  margin: 5vw auto;
+  width: 50vw;
+  height: 10vw;
+}
+.b_box .b_btn_box .balance-pop {
+  text-align: left;
+  border-radius: 1vw;
+}
+.b_box .b_btn_box .balance-pop .b-msg-box {
+  display: block;
+  padding: 3vw;
+}
+.b_box .b_btn_box .balance-pop .recharge {
+  height: 30vw;
+}
+.b_box .b_btn_box .balance-pop .verifyimg {
+  width: 20vw;
+  height: 8vw;
+  background: lemonchiffon;
+}
+.b_box .b_btn_box .b-post-btn {
+  display: block;
+  width: 50vw;
+  margin: 5vw auto;
+}
+

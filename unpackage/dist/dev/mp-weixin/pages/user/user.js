@@ -94,19 +94,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uGrid: function() {
-    return Promise.all(/*! import() | uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid/u-grid.vue */ 132))
+    return Promise.all(/*! import() | uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid/u-grid.vue */ 186))
   },
   uGridItem: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-grid-item/u-grid-item */ "uview-ui/components/u-grid-item/u-grid-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid-item/u-grid-item.vue */ 139))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-grid-item/u-grid-item */ "uview-ui/components/u-grid-item/u-grid-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-grid-item/u-grid-item.vue */ 193))
   },
   uIcon: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 153))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 214))
   },
   uCellGroup: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-group/u-cell-group */ "uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-group/u-cell-group.vue */ 160))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-group/u-cell-group */ "uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-group/u-cell-group.vue */ 221))
   },
   uCellItem: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-item/u-cell-item */ "uview-ui/components/u-cell-item/u-cell-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-item/u-cell-item.vue */ 167))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-item/u-cell-item */ "uview-ui/components/u-cell-item/u-cell-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-item/u-cell-item.vue */ 228))
+  },
+  uButton: function() {
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-button/u-button */ "uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-button/u-button.vue */ 235))
   }
 }
 var render = function() {
@@ -188,16 +191,36 @@ var _default =
 {
   data: function data() {
     return {
-      userinfo: null };
+      userinfo: null,
+      islogin: false,
+      header: {
+        'content-type': 'application/json;charset=UTF-8',
+        Cookie: wx.getStorageSync('usercookie') //读取cookie
+      },
+      user_id: '' };
 
   },
-  onLoad: function onLoad() {var _this = this;
-    var userdata = JSON.parse(wx.getStorageSync('userinfo'));
-    this.$u.get('https://www.wdf5.com/api/user/profile/' + userdata.id, {}).then(function (res) {
-      _this.userinfo = res.data.data;
-    });
-    this.$u.mpShare.title = userdata.name + '的甜虾个人中心';
+  onShow: function onShow() {var _this = this;
+    this.islogin = false;
+    if (wx.getStorageSync('userinfo')) {
+      var userdata = JSON.parse(wx.getStorageSync('userinfo'));
+      this.$u.get('https://www.wdf5.com/api/user/profile/' + userdata.id, {}).then(function (res) {
+        _this.userinfo = res.data.data;
+        console.log(res);
+      });
+      this.$u.mpShare.title = userdata.name + '的甜虾个人中心';
+      this.islogin = true;
+    } else {
+      uni.showLoading({
+        title: '您未登录！' });
+
+      setTimeout(function () {
+        _this.$u.route('/pages/user/login/login');
+        uni.hideLoading();
+      }, 1000);
+    }
   },
+  onLoad: function onLoad() {},
   methods: {
     openPhone: function openPhone() {
       uni.makePhoneCall({
@@ -222,6 +245,42 @@ var _default =
       this.$u.route({
         url: 'pages/user/userset/userset' });
 
+    },
+    goSell: function goSell() {
+      this.$u.route({
+        url: 'pages/good/sellorder/sellorder' });
+
+    },
+    goBuy: function goBuy() {
+      this.$u.route({
+        url: 'pages/good/buyorder/buyorder' });
+
+    },
+    goBalance: function goBalance() {
+      this.$u.route({
+        url: 'pages/user/balance/balance' });
+
+    },
+    goPerson: function goPerson() {
+      this.$u.route({
+        url: 'pages/user/personal/personal',
+        params: {
+          user_id: JSON.parse(wx.getStorageSync('userinfo')).id } });
+
+
+    },
+    logout: function logout() {var _this2 = this;
+      uni.showLoading({
+        title: '正在退出' });
+
+      this.$u.get('https://www.wdf5.com/api/user/logout', {}, this.header).then(function (res) {
+        wx.removeStorageSync('userinfo');
+        uni.hideLoading();
+        _this2.$u.route({
+          url: '/pages/index/index',
+          type: 'switchTab' });
+
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

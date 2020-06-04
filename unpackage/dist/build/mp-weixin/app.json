@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/second/second",
+    "pages/message/message",
+    "pages/user/user",
+    "pages/user/login/login",
+    "pages/user/register/register",
+    "pages/user/userset/userset",
+    "pages/good/good",
+    "pages/category/category",
+    "pages/search/search",
+    "pages/edit/edit",
+    "pages/good/buyorder/buyorder",
+    "pages/good/sellorder/sellorder",
+    "pages/user/balance/balance",
+    "pages/user/personal/personal"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#cdcdcd",
+    "selectedColor": "#39cffc",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabbar/index.png",
+        "selectedIconPath": "static/tabbar/index-check.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/second/second",
+        "iconPath": "static/tabbar/second.png",
+        "selectedIconPath": "static/tabbar/second-check.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "iconPath": "static/tabbar/message.png",
+        "selectedIconPath": "static/tabbar/message-check.png",
+        "text": "信息"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "static/tabbar/user.png",
+        "selectedIconPath": "static/tabbar/user-check.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

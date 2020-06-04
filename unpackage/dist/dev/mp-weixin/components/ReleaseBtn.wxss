@@ -1,0 +1,19 @@
+.r-btn-box.data-v-0dae9d68 {
+  height: 120rpx;
+  width: 120rpx;
+  background: #ffe60f;
+  border-radius: 60rpx;
+  position: fixed;
+  z-index: 9999;
+  right: 5vw;
+  bottom: 30vw;
+  text-align: center;
+  box-shadow: 0.4vw 0.4vw 0.4vw #888888;
+  opacity: 0.85;
+}
+.r-btn-box .release-iocn.data-v-0dae9d68 {
+  display: block;
+  line-height: 120rpx;
+  font-weight: 700;
+}
+

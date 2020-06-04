@@ -1,23 +1,23 @@
 <template>
-	<view v-if="userinfo">
+	<view v-if="userinfo && islogin">
 		<image class="user-poster" src="@/static/user/user-bg.png"></image>
 		<view class="user-info">
 			<image class="user-headimg" :src="userinfo.headImg"></image>
-			<view class="user-name">{{userinfo.userName}}</view>
+			<view class="user-name">{{ userinfo.userName }}</view>
 		</view>
 		<view class="user-action">
 			<u-grid :col="4" :border="false">
 				<u-grid-item>
 					<u-icon name="order" :size="46" color="#F4EA29"></u-icon>
-					<view class="grid-text">发布的{{userinfo.totalCount}}</view>
+					<view class="grid-text">发布的{{ userinfo.totalCount }}</view>
 				</u-grid-item>
-				<u-grid-item>
+				<u-grid-item @click="goSell">
 					<u-icon name="rmb-circle-fill" :size="46" color="#F9AB10"></u-icon>
-					<view class="grid-text">卖出的{{userinfo.sellCount}}</view>
+					<view class="grid-text">卖出的{{ userinfo.sellCount }}</view>
 				</u-grid-item>
-				<u-grid-item>
+				<u-grid-item @click="goBuy">
 					<u-icon name="bag-fill" :size="46" color="#E0620D"></u-icon>
-					<view class="grid-text">买到的{{userinfo.buyCount}}</view>
+					<view class="grid-text">买到的{{ userinfo.buyCount }}</view>
 				</u-grid-item>
 				<u-grid-item>
 					<u-icon name="shopping-cart-fill" :size="46" color="#0B74EC"></u-icon>
@@ -25,12 +25,12 @@
 				</u-grid-item>
 			</u-grid>
 			<u-cell-group>
-				<u-cell-item icon="red-packet-fill" title="我的余额"></u-cell-item>
-				<u-cell-item icon="account-fill" title="个人主页"></u-cell-item>
+				<u-cell-item icon="red-packet-fill" title="我的余额" @click="goBalance"></u-cell-item>
+				<u-cell-item icon="account-fill" title="个人主页" @click="goPerson"></u-cell-item>
 				<u-cell-item icon="setting-fill" title="资料设置" @click="goSet"></u-cell-item>
 				<u-cell-item icon="integral-fill" title="会员等级" value="暂未开放"></u-cell-item>
 				<u-cell-item icon="phone-fill" title="联系我们" @click="openPhone"></u-cell-item>
-				<u-cell-item icon="phone-fill" title="测试登录" @click="goLogin"></u-cell-item>
+				<u-button type="error" :ripple="true" ripple-bg-color="#909399" @click="logout">退出登录</u-button>
 			</u-cell-group>
 		</view>
 	</view>
@@ -40,16 +40,36 @@
 export default {
 	data() {
 		return {
-			userinfo:null
+			userinfo: null,
+			islogin: false,
+			header: {
+				'content-type': 'application/json;charset=UTF-8',
+				Cookie: wx.getStorageSync('usercookie') //读取cookie
+			},
+			user_id: ''
 		};
 	},
-	onLoad() {
-		let userdata = JSON.parse(wx.getStorageSync('userinfo'));
-		this.$u.get('https://www.wdf5.com/api/user/profile/' + userdata.id, {}).then(res => {
-			this.userinfo=res.data.data
-		});
-		this.$u.mpShare.title = userdata.name + '的甜虾个人中心';
+	onShow() {
+		this.islogin = false;
+		if (wx.getStorageSync('userinfo')) {
+			let userdata = JSON.parse(wx.getStorageSync('userinfo'));
+			this.$u.get('https://www.wdf5.com/api/user/profile/' + userdata.id, {}).then(res => {
+				this.userinfo = res.data.data;
+				console.log(res);
+			});
+			this.$u.mpShare.title = userdata.name + '的甜虾个人中心';
+			this.islogin = true;
+		} else {
+			uni.showLoading({
+				title: '您未登录！'
+			});
+			setTimeout(() => {
+				this.$u.route('/pages/user/login/login');
+				uni.hideLoading();
+			}, 1000);
+		}
 	},
+	onLoad() {},
 	methods: {
 		openPhone() {
 			uni.makePhoneCall({
@@ -73,6 +93,42 @@ export default {
 		goSet() {
 			this.$u.route({
 				url: 'pages/user/userset/userset'
+			});
+		},
+		goSell() {
+			this.$u.route({
+				url: 'pages/good/sellorder/sellorder'
+			});
+		},
+		goBuy() {
+			this.$u.route({
+				url: 'pages/good/buyorder/buyorder'
+			});
+		},
+		goBalance() {
+			this.$u.route({
+				url: 'pages/user/balance/balance'
+			});
+		},
+		goPerson() {
+			this.$u.route({
+				url: 'pages/user/personal/personal',
+				params: {
+					user_id: JSON.parse(wx.getStorageSync('userinfo')).id
+				}
+			});
+		},
+		logout() {
+			uni.showLoading({
+				title: '正在退出'
+			});
+			this.$u.get('https://www.wdf5.com/api/user/logout', {}, this.header).then(res => {
+				wx.removeStorageSync('userinfo');
+				uni.hideLoading();
+				this.$u.route({
+					url: '/pages/index/index',
+					type: 'switchTab'
+				});
 			});
 		}
 	}

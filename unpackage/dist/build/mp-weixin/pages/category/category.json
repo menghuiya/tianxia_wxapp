@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "二手分类",
+  "usingComponents": {
+    "u-empty": "/uview-ui/components/u-empty/u-empty",
+    "product-list": "/components/ProductList"
+  }
+}

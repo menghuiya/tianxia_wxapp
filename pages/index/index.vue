@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<u-sticky offset-top="0">
-			<view class="searchbox"><u-search placeholder="日照香炉生紫烟" v-model="keyword" :clearabled="true" @search="showkey" @custom="showkey"></u-search></view>
+			<view class="searchbox"><u-search placeholder="请输入搜索内容" v-model="keyword" :clearabled="true" @search="showkey" @custom="showkey"></u-search></view>
 		</u-sticky>
 		<view class="wrap"><u-swiper :list="list"></u-swiper></view>
 		<u-grid :col="5" v-if="catelist" :border="false">
@@ -44,12 +44,11 @@ export default {
 		ProductList
 	},
 	onLoad() {
-		this.$u.mpShare.title = '天苍苍野茫茫，风水草地现牛羊';
+		this.$u.mpShare.title = '甜虾二手市场,让您的闲置物品不在无聊';
 		this.$u
 			.get('https://www.wdf5.com/api/commodity/kind', {})
 			.then(res => {
 				this.catelist = res.data.data;
-				console.log(res);
 			})
 			.catch(err => {
 				console.log(err.msg);

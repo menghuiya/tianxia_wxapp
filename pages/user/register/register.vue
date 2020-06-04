@@ -61,10 +61,19 @@ export default {
 			this.$u
 				.post('https://www.wdf5.com/api/user/register', this.p)
 				.then(res => {
+					wx.setStorageSync("usercookie", res.cookies[0])
+					let data=res.data.data
+					let userInfo={
+						id:data.id,
+						name:data.userName
+					}
+					wx.setStorageSync('userinfo',JSON.stringify(userInfo))
+					console.log(res)
 					this.$refs.uToast.show({
 						title: '注册成功',
-						type: 'success'
-						// url: '/pages/user/index'
+						type: 'success',
+						url: '/pages/user/user',
+						isTab:true
 					});
 				})
 				.catch(err => {

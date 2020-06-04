@@ -1,0 +1,1 @@
+.user-poster{width:100%;height:50vw;display:block;position:absolute;z-index:-1}.user-info{text-align:center}.user-info .user-headimg{width:20vw;height:20vw;border-radius:10vw;margin-top:15vw}.user-info .user-name{font-size:32rpx;font-weight:600}.user-action{margin:3vw 2vw;padding:3vw 0;background-color:#fff;border-radius:2vw}
